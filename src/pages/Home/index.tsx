@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-import * as S from './styles'
+import * as S from "./styles";
 import api from "../../services/api";
+import ReactPlayer from "react-player/lazy";
 
 interface IComments {
   textDisplay: string;
@@ -25,13 +26,17 @@ export const Home = () => {
   }, [comments]);
 
   return (
-    <>
+     
+    <S.Container>
+      <ReactPlayer url="https://www.youtube.com/watch?v=tMWpm_GOLaA" />
       <S.Title>{comments?.textDisplay}</S.Title>
       <h1>{comments?.authorDisplayName}</h1>
-      <img src={comments?.authorProfileImageUrl} alt={comments?.authorDisplayName} />
-    </>
+      <img
+        src={comments?.authorProfileImageUrl}
+        alt={comments?.authorDisplayName}
+      />
+    </S.Container>
   );
 };
 
 export default Home;
- 
