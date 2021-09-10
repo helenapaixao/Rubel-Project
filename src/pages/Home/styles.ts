@@ -11,7 +11,7 @@ margin-top: 10px;
 export const NameUser = styled.h1`
   font-size: 22px;
   font-weight: bold;
-  margin-top: 10px;
+  margin-top: 15px;
   margin-left: 10px;
 `;
 

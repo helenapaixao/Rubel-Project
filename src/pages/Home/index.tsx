@@ -34,21 +34,25 @@ export const Home = () => {
       <Center>
         <ReactPlayer url="https://www.youtube.com/watch?v=tMWpm_GOLaA" />
       </Center>
-      <Box maxW="sm" borderWidth="2px" borderRadius="lg" overflow="hidden">
-        <S.ContainerAvatar>
-          <Avatar
-            name={comments?.authorDisplayName}
-            src={comments?.authorProfileImageUrl}
-          />
-          <Box>
-            <S.NameUser>{comments?.authorDisplayName}</S.NameUser>
-          </Box>
-        </S.ContainerAvatar>
+      <Center>
+        <Box maxW="990px" borderWidth="2px" borderRadius="lg" width="200" overflow="hidden" marginTop="10" >
+          <S.ContainerAvatar>
+            <Avatar
+              marginTop="2"
+              marginBottom="2"
+              name={comments?.authorDisplayName}
+              src={comments?.authorProfileImageUrl}
+            />
+            <Box>
+              <S.NameUser>{comments?.authorDisplayName}</S.NameUser>
+            </Box>
+          </S.ContainerAvatar>
 
-        <Center>
-          <S.Comments>{comments?.textDisplay}</S.Comments>
-        </Center>
-      </Box>
+          <Center>
+            <S.Comments>{comments?.textDisplay}</S.Comments>
+          </Center>
+        </Box>
+      </Center>
     </S.Container>
   );
 };
