@@ -29,19 +29,26 @@ export const Home = () => {
   return (
     <S.Container>
       <Center>
+        <S.Title>Histórias sobre quando bate aquela saudade</S.Title>
+      </Center>
+      <Center>
         <ReactPlayer url="https://www.youtube.com/watch?v=tMWpm_GOLaA" />
       </Center>
-      <S.ContainerAvatar>
-        <Avatar
-          name={comments?.authorDisplayName}
-          src={comments?.authorProfileImageUrl}
-        />
-        <S.NameUser>{comments?.authorDisplayName}</S.NameUser>
-      </S.ContainerAvatar>
+      <Box maxW="sm" borderWidth="2px" borderRadius="lg" overflow="hidden">
+        <S.ContainerAvatar>
+          <Avatar
+            name={comments?.authorDisplayName}
+            src={comments?.authorProfileImageUrl}
+          />
+          <Box>
+            <S.NameUser>{comments?.authorDisplayName}</S.NameUser>
+          </Box>
+        </S.ContainerAvatar>
 
-      <Center>
-        <S.Comments>{comments?.textDisplay}</S.Comments>
-      </Center>
+        <Center>
+          <S.Comments>{comments?.textDisplay}</S.Comments>
+        </Center>
+      </Box>
     </S.Container>
   );
 };
