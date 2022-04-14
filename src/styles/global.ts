@@ -6,15 +6,16 @@ export default createGlobalStyle`
     padding: 0;
     outline: 0;
     box-sizing:border-box;
+    background-color:rgb(38, 38, 38);
   }
   body {
     font: 400 14px 'Roboto', sans-serif;
-    color: #000;
-    background: #FFF;
+    color: #F2F2F2;;
+    background: #F2F2F2;
     -webkit-font-smoothing: antialiased;
   }
   h1 {
-    color: #000;
+    color: #F2F2F2;
     font-size: 20px;
   }
   body, input, button {
