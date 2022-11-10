@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import * as S from './styles'
 import api from '../../services/api'
 import ReactPlayer from 'react-player/lazy'
-import { Avatar, Box, Center } from '@chakra-ui/react'
+import { Avatar, Box, Center, Text } from '@chakra-ui/react'
 
 interface IComments {
   textDisplay: string
@@ -48,31 +48,26 @@ export const Home = () => {
           {comments.map((comment) => (
             <Box key={comment.textDisplay} p="6">
               <Box d="flex" alignItems="baseline">
+              <Box ml='3'>
                 <Avatar
                   size="sm"
                   name={comment.authorDisplayName}
                   src={comment.authorProfileImageUrl}
                 />
+                    <Text fontWeight='bold'>
+                {comment.authorDisplayName}
+                </Text>
                 <Box
-                  color="gray.500"
-                  fontWeight="semibold"
-                  letterSpacing="wide"
-                  fontSize="xs"
-                  textTransform="uppercase"
-                  ml="2"
-                >
-                  {comment.authorDisplayName}
-                </Box>
-
-                  <Box
                     mt="1"
                     fontWeight="normal"
                     as="span"
                     lineHeight="tight"
-                    isTruncated
+                    
                   >
                     {comment.textDisplay}
                     </Box>
+                  </Box>
+                 
               </Box>
             </Box>
           ))}
