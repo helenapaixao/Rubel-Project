@@ -11,21 +11,23 @@ interface IComments {
 }
 
 export const Home = () => {
-  const [comments, setComments] = useState<IComments | null>(null)
+  const [comments, setComments] = useState<IComments[]>([])
 
   useEffect(() => {
-    api
-      .get(
-        'commentThreads?key=AIzaSyBVvjnVOq46KUN693RBjLFCORCu2ODf8rw&textFormat=plainText&part=snippet&videoId=tMWpm_GOLaA&maxResults=50',
+    async function loadComments() {
+      const response = await api.get(
+        'commentThreads?key=AIzaSyBVvjnVOq46KUN693RBjLFCORCu2ODf8rw&textFormat=plainText&part=snippet&videoId=tMWpm_GOLaA&maxResults=50'
       )
-      .then((response) => {
-        console.log(
-          response.data.items[0].snippet.topLevelComment.snippet.textDisplay,
-        )
-        setComments(response.data.items[0].snippet.topLevelComment.snippet)
-      })
-  }, [comments])
+      setComments(response.data.items.map((item: any) => item.snippet.topLevelComment.snippet))
 
+      console.log(response.data.items)
+    }
+    loadComments()
+
+  }, [])
+
+
+ 
   return (
     <S.Container>
       <Center>
@@ -43,26 +45,49 @@ export const Home = () => {
           overflow="hidden"
           marginTop="10"
         >
-          {comments &&  (
-            <>
-              <S.ContainerAvatar>
+          {comments.map((comment) => (
+            <Box key={comment.textDisplay} p="6">
+              <Box d="flex" alignItems="baseline">
                 <Avatar
-                  marginTop="2"
-                  marginBottom="2"
-                  name={comments?.authorDisplayName}
-                  src={comments?.authorProfileImageUrl}
+                  size="sm"
+                  name={comment.authorDisplayName}
+                  src={comment.authorProfileImageUrl}
                 />
-                <Box>
-                  <S.NameUser>{comments?.authorDisplayName}</S.NameUser>
+                <Box
+                  color="gray.500"
+                  fontWeight="semibold"
+                  letterSpacing="wide"
+                  fontSize="xs"
+                  textTransform="uppercase"
+                  ml="2"
+                >
+                  {comment.authorDisplayName}
                 </Box>
-              </S.ContainerAvatar>
 
-              <Center>
-                <S.Comments>{comments?.textDisplay}</S.Comments>
-              </Center>
-            </>
-          )}
+                  <Box
+                    mt="1"
+                    fontWeight="normal"
+                    as="span"
+                    lineHeight="tight"
+                    isTruncated
+                  >
+                    {comment.textDisplay}
+                    </Box>
+              </Box>
+            </Box>
+          ))}
         </Box>
+
+
+
+
+                
+
+  
+         
+
+
+  
       </Center>
     </S.Container>
   )
