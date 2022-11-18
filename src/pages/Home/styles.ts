@@ -21,7 +21,6 @@ export const Profile = styled.image`
 
 export const Comments = styled.h1`
   font-size: 18px;
-/*   font-weight: bold; */
   text-align: center;
   align-items: center;
 `;
