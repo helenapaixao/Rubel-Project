@@ -29,3 +29,13 @@ export const ContainerAvatar = styled.div`
   margin-left: 20px;
   display: flex;
 `;
+
+export const Pagination = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+`;
+
+
+
