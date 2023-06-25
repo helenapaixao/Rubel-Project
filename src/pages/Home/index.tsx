@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import * as S from "./styles";
 import api from "../../services/api";
-import ReactPlayer from "react-player/lazy";
+import ReactPlayer from 'react-player'
+
+
 import { Avatar, Box, Center, Text } from "@chakra-ui/react";
 
 
@@ -10,6 +12,8 @@ interface IComments {
   authorDisplayName: string;
   authorProfileImageUrl: string;
 }
+
+
 
 export const Home = () => {
   const [comments, setComments] = useState<IComments[]>([]);
@@ -45,7 +49,11 @@ export const Home = () => {
         <S.Title>Histórias de  quando bate aquela saudade</S.Title>
       </Center>
       <Center>
-        <ReactPlayer url="https://www.youtube.com/watch?v=tMWpm_GOLaA" />
+        <ReactPlayer
+          url="https://www.youtube.com/watch?v=tMWpm_GOLaA"
+          controls={true}
+        />
+        
       </Center>
       <Center>
         <Box
